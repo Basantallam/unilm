@@ -19,15 +19,17 @@ if __name__ == '__main__':
     Now only feasible for trackA_XX
     """
     parser = argparse.ArgumentParser()
-    parser.add_argument('--root_dir', default="../datasets/icdar2019/at_trackA_archival")
+    parser.add_argument('--root_dir', default="/content/apex/PATH-to-ICDAR/at_trackA_archival/train")
     args = parser.parse_args()
-
+    print("print ",os.listdir(args.root_dir),"\n")
     for fdname in os.listdir(args.root_dir):
         if fdname.endswith(".json"):
             continue
         ffdname = os.path.join(args.root_dir, fdname)
+        print("print2 ",os.listdir(ffdname),"\n")
         for file in tqdm.tqdm(os.listdir(ffdname)):
             if file.endswith(".xml"):
                 continue
             ffile = os.path.join(ffdname, file)
+            print("print3", ffile+"\n")
             convert(ffile)
