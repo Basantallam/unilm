@@ -23,10 +23,11 @@ if __name__ == '__main__':
     args = parser.parse_args()
     print("print ",os.listdir(args.root_dir),"\n")
     for fdname in os.listdir(args.root_dir):
-        if fdname.endswith(".json"):
+        if fdname.endswith(".json") or fdname.endswith("trackA_archival"):
             continue
         ffdname = os.path.join(args.root_dir, fdname)
         print("print2 ",os.listdir(ffdname),"\n")
+        print("curr = ", fdname)
         for file in tqdm.tqdm(os.listdir(ffdname)):
             if file.endswith(".xml"):
                 continue
