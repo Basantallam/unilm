@@ -1,5 +1,5 @@
 import argparse
-
+import os
 import cv2
 
 from ditod import add_vit_config
