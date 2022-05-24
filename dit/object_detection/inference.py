@@ -60,8 +60,6 @@ def main():
     for image_name in list_of_names:
       img = cv2.imread(os.path.join(args.images_directory,image_name))
       print(image_name)
-      print(img)
-      print(type(img))
       md = MetadataCatalog.get(cfg.DATASETS.TEST[0])
       if cfg.DATASETS.TEST[0]=='icdar2019_test':
           md.set(thing_classes=["table"])
@@ -77,7 +75,7 @@ def main():
       result_image = result.get_image()[:, :, ::-1]
 
       # step 6: save
-      cv2.imwrite(imagfe_name+"_OD_output", result_image)
+      cv2.imwrite(image_name+"_OD_output", result_image)
 
 if __name__ == '__main__':
     main()
