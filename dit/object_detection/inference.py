@@ -59,7 +59,9 @@ def main():
     list_of_names=os.listdir(args.images_directory)
     for image_name in list_of_names:
       img = cv2.imread(image_name)
-
+      print(image_name)
+      print(img)
+      print(type(img))
       md = MetadataCatalog.get(cfg.DATASETS.TEST[0])
       if cfg.DATASETS.TEST[0]=='icdar2019_test':
           md.set(thing_classes=["table"])
