@@ -21,8 +21,8 @@ def main():
         required=True,
     )
     parser.add_argument(
-        "--output_file_name",
-        help="Name of the output visualization file.",
+        "--output_directory",
+        help="Name of the output directory",
         type=str,
     )
     parser.add_argument(
