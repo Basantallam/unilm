@@ -78,7 +78,7 @@ def main():
       result_image = result.get_image()[:, :, ::-1]
 
       # step 6: save
-      cv2.imwrite(image_name+"_OD_output", result_image)
+      cv2.imwrite(image_name+"_OD_output.jpg", result_image)
 
 if __name__ == '__main__':
     main()
