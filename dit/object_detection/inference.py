@@ -57,12 +57,16 @@ def main():
     
     # Step 5: run inference
     list_of_names=os.listdir(args.images_directory)
+    x=0
     for image_name in list_of_names:
       if not image_name.endswith('.jpg'):
         print("skipped ", image_name)
         continue
       img = cv2.imread(os.path.join(args.images_directory,image_name))
-      print(image_name)
+      if x%100==0:
+        print(x)
+      x=x+1
+      #print(image_name)
       md = MetadataCatalog.get(cfg.DATASETS.TEST[0])
       if cfg.DATASETS.TEST[0]=='icdar2019_test':
           md.set(thing_classes=["table"])
@@ -76,7 +80,7 @@ def main():
                     instance_mode=ColorMode.SEGMENTATION)
       result = v.draw_instance_predictions(output.to("cpu"))
       result_image = result.get_image()[:, :, ::-1]
-      print(os.path.join(args.output_directory,os.path.splitext(image_name)[0]+"_output.jpg"))
+      #print(os.path.join(args.output_directory,os.path.splitext(image_name)[0]+"_output.jpg"))
       # step 6: save
       cv2.imwrite(os.path.join(args.output_directory,os.path.splitext(image_name)[0]+"_output.jpg"), result_image)
 
