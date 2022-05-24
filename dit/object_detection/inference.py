@@ -15,7 +15,7 @@ from detectron2.engine import DefaultPredictor
 def main():
     parser = argparse.ArgumentParser(description="Detectron2 inference script")
     parser.add_argument(
-        "--image_path",
+        "--images_directory",
         help="Path to input image",
         type=str,
         required=True,
@@ -56,24 +56,26 @@ def main():
     predictor = DefaultPredictor(cfg)
     
     # Step 5: run inference
-    img = cv2.imread(args.image_path)
+    list_of_names=os.listdir(args.images_directory)
+    for image_name in list_of_names:
+      img = cv2.imread(image_name)
 
-    md = MetadataCatalog.get(cfg.DATASETS.TEST[0])
-    if cfg.DATASETS.TEST[0]=='icdar2019_test':
-        md.set(thing_classes=["table"])
-    else:
-        md.set(thing_classes=["text","title","list","table","figure"])
+      md = MetadataCatalog.get(cfg.DATASETS.TEST[0])
+      if cfg.DATASETS.TEST[0]=='icdar2019_test':
+          md.set(thing_classes=["table"])
+      else:
+          md.set(thing_classes=["text","title","list","table","figure"])
 
-    output = predictor(img)["instances"]
-    v = Visualizer(img[:, :, ::-1],
+      output = predictor(img)["instances"]
+      v = Visualizer(img[:, :, ::-1],
                     md,
                     scale=1.0,
                     instance_mode=ColorMode.SEGMENTATION)
-    result = v.draw_instance_predictions(output.to("cpu"))
-    result_image = result.get_image()[:, :, ::-1]
+      result = v.draw_instance_predictions(output.to("cpu"))
+      result_image = result.get_image()[:, :, ::-1]
 
-    # step 6: save
-    cv2.imwrite(args.output_file_name, result_image)
+      # step 6: save
+      cv2.imwrite(imagfe_name+"_OD_output", result_image)
 
 if __name__ == '__main__':
     main()
