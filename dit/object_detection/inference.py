@@ -58,6 +58,9 @@ def main():
     # Step 5: run inference
     list_of_names=os.listdir(args.images_directory)
     for image_name in list_of_names:
+      if not image_name.endswith('.jpg'):
+        print("skipped ", image_name)
+        continue
       img = cv2.imread(os.path.join(args.images_directory,image_name))
       print(image_name)
       md = MetadataCatalog.get(cfg.DATASETS.TEST[0])
