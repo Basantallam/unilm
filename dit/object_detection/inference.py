@@ -76,7 +76,7 @@ def main():
                     instance_mode=ColorMode.SEGMENTATION)
       result = v.draw_instance_predictions(output.to("cpu"))
       result_image = result.get_image()[:, :, ::-1]
-
+      print(os.path.join(args.output_directory,os.path.splitext(image_name)[0]+"_output.jpg"))
       # step 6: save
       cv2.imwrite(os.path.join(args.output_directory,os.path.splitext(image_name)[0]+"_output.jpg"), result_image)
 
