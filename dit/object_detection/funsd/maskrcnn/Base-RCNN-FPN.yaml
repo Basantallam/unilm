@@ -1,32 +1,3 @@
-
-Skip to content
-Pulls
-Issues
-Marketplace
-Explore
-@Basantallam
-Basantallam /
-unilm
-Public
-forked from microsoft/unilm
-
-Code
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-
-    Settings
-
-unilm/dit/object_detection/publaynet_configs/maskrcnn/Base-RCNN-FPN.yaml
-@Basantallam
-Basantallam Add files via upload
-Latest commit a7ce54c 15 days ago
-History
-1 contributor
-69 lines (69 sloc) 1.87 KB
 MODEL:
   MASK_ON: True
   META_ARCHITECTURE: "GeneralizedRCNN"
@@ -97,18 +68,3 @@ AUG:
   DETR: True
 SEED: 42
 
-    © 2022 GitHub, Inc.
-
-    Terms
-    Privacy
-    Security
-    Status
-    Docs
-    Contact GitHub
-    Pricing
-    API
-    Training
-    Blog
-    About
-
-Loading complete
