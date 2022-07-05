@@ -57,14 +57,14 @@ def main(args):
     register_coco_instances(
         "funsd_test",
         {},
-        "netscratch/allam/FUNSD/FUNSD_dataset/testing_data/coco_annotations.json",
-        "netscratch/allam/FUNSD/FUNSD_dataset/testing_data/images"
+        "/content/drive/MyDrive/Bachelor/Datasets/FUNSD_dataset/training_data/coco_annotations_ID.json",
+        "/content/drive/MyDrive/Bachelor/Datasets/FUNSD_dataset/training_data/images"
     )
     register_coco_instances(
         "funsd_train",
         {},
-        "netscratch/allam/FUNSD/FUNSD_dataset/training_data/coco_annotations.json",
-        "netscratch/allam/FUNSD/FUNSD_dataset/training_data/images"
+        "/content/drive/MyDrive/Bachelor/Datasets/FUNSD_dataset/testing_data/coco_annotations_ID.json",
+        "/content/drive/MyDrive/Bachelor/Datasets/FUNSD_dataset/testing_data/images"
     )
 
     cfg = setup(args)
