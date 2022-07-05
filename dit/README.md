@@ -76,6 +76,15 @@ We summarize the validation results as follows. We also provide the fine-tuned w
 
 We summarize the validation results as follows. We also provide the fine-tuned weights. The detailed instructions to reproduce the results can be found at [`object_detection/README.md`](object_detection/README.md).
 
+## Fine-tuning on Form Understanding on FUNSD Dataset which is composed of 199 Noisy Scanned Form Images.
+I finetuned the Object Detection model that was previously fine-tuned on PubLayNet to perform a new task, namely: Form Understanding.
+
+I used the mask RCNN Base model provided by microsoft unilm that was fine-tuned on PunLayNet. I trained it on 149 images from the FUNSD Dataset and Tested it on 50 images from FUNSD Test Set. 
+
+I converted the FUNSD Annotations to COCO-Style Annotations, which you can find in the folder named FUNSD DataSet in the Object Detection Directory
+
+In Order to Run the 
+
 **Modern**
 
 | name | initialized checkpoint | detection algorithm  |  Weighted Average F1 | weight |
