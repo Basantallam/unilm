@@ -1,3 +1,26 @@
+Base-RCNN-FPN.yaml
+Who has access
+B
+B
+System properties
+Type
+Unknown File
+Size
+2 KB
+Storage used
+4 KB
+Location
+Bachelor
+Owner
+Basant Allam
+Modified
+5:20 PM by me
+Opened
+5:42 PM by me
+Created
+May 18, 2022
+Add a description
+Viewers can download
 MODEL:
   MASK_ON: True
   META_ARCHITECTURE: "GeneralizedRCNN"
