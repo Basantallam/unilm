@@ -58,13 +58,13 @@ def main(args):
         "funsd_test",
         {},
         "/content/unilm/dit/object_detection/funsd/coco_test_1based.json",
-        "/content/drive/MyDrive/Bachelor/Datasets/FUNSD_dataset/training_data/images"
+        "/content/unilm/dit/object_detection/FUNSD_dataset/testing_data/images"
     )
     register_coco_instances(
         "funsd_train",
         {},
         "/content/unilm/dit/object_detection/funsd/coco_train_1based.json",
-        "/content/drive/MyDrive/Bachelor/Datasets/FUNSD_dataset/testing_data/images"
+        "/content/unilm/dit/object_detection/FUNSD_dataset/training_data/images"
     )
 
     cfg = setup(args)
