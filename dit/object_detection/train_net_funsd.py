@@ -57,13 +57,13 @@ def main(args):
     register_coco_instances(
         "funsd_test",
         {},
-        "/content/drive/MyDrive/Bachelor/Datasets/FUNSD_dataset/training_data/coco_annotations.json",
+        "/content/drive/MyDrive/Bachelor/Datasets/FUNSD_dataset/training_data/coco_annotations_ID.json",
         "/content/drive/MyDrive/Bachelor/Datasets/FUNSD_dataset/training_data/images"
     )
     register_coco_instances(
         "funsd_train",
         {},
-        "/content/drive/MyDrive/Bachelor/Datasets/FUNSD_dataset/testing_data/coco_annotations.json",
+        "/content/drive/MyDrive/Bachelor/Datasets/FUNSD_dataset/testing_data/coco_annotations_ID.json",
         "/content/drive/MyDrive/Bachelor/Datasets/FUNSD_dataset/testing_data/images"
     )
 
