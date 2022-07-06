@@ -111,7 +111,7 @@ def main():
        # curr_list.append(d['scores'][i].item())
 
         #print(curr_list)
-        zipped=dict(zip(keys,curr_list))
+        #zipped=dict(zip(keys,curr_list))
         #print(zipped)
         #print(type(zipped))
         #curr_list = list()
