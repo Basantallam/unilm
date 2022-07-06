@@ -2,7 +2,7 @@ _BASE_: "../Base-RCNN-FPN.yaml"
 MODEL:
   PIXEL_MEAN: [ 127.5, 127.5, 127.5 ]
   PIXEL_STD: [ 127.5, 127.5, 127.5 ]
-  WEIGHTS: "home/allam/OD_eval_all/model_0039999.pth"
+  WEIGHTS: "/content/drive/allam/last_checkpoint.pth"
   VIT:
     NAME: "dit_base_patch16"
 SOLVER:
