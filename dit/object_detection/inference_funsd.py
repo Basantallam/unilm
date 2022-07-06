@@ -69,7 +69,7 @@ def main():
 
     for image_name in list_of_names:
     
-      if not image_name.endswith('.jpg') and image_name.endswith('.png'):
+      if not image_name.endswith('.jpg') and not image_name.endswith('.png'):
         print("skipped ", image_name)
         continue
       
