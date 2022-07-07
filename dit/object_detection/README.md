@@ -2,7 +2,7 @@
 
 ## Fine-Tuning On FUNSD
 
-If you woud like to fine-tune the Object Detection Model on FUNSD. You can run the following commands:
+### If you woud like to fine-tune the DiT Graphical Object Detection Model on FUNSD, you can run the following commands:
 
 ### Clone Detectron2 Repository, which will be our detection Framework
 
