@@ -7,22 +7,18 @@ If you woud like to fine-tune the Object Detection Model on FUNSD. You can run t
 ### Clone Detectron2 Repository, which will be our detection Framework
 
 ```
-
 git clone https://github.com/facebookresearch/detectron2.git
 python -m pip install -e detectron2
 
 python -m pip install detectron2 -f \
   https://dl.fbaipublicfiles.com/detectron2/wheels/cu111/torch1.9/index.html
-
 ```
 
 ## Install Some Required Modules
 
 ```
-
 pip install shapely
 pip install opencv-python-headless
-
 ```
 
 ### Clone Our Repository, which contains:
@@ -32,9 +28,7 @@ pip install opencv-python-headless
 - The python code for fine-tuning on FUNSD, evaluating and inference
 
 ```
-
 git clone https://github.com/Basantallam/unilm
-
 ```
  After Cloning Our Repository using the previous command, you will have a directory called unilm, which we'll be referencing in the next steps
  
@@ -47,9 +41,7 @@ The arguments required are as follows:
 - initial model weights, which in this case I chose to be the weights of DiT Mask RCNN Base Model that was Trained on PubLayNet
 
 ```
-
 python3 /unilm/dit/object_detection/train_net_funsd.py --config-file /unilm/dit/object_detection/funsd/maskrcnn_dit_base.yaml --num-gpus 8 MODEL.WEIGHTS https://layoutlm.blob.core.windows.net/dit/dit-fts/icdar19modern_dit-b_mrcnn.pth
-
 ```
 
 ## Citation
