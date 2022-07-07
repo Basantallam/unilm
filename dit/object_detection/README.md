@@ -33,7 +33,7 @@ git clone https://github.com/Basantallam/unilm
  After Cloning Our Repository using the previous command, you will have a directory called unilm, which we'll be referencing in the next steps
  
 ## Run the fine-tuning code in the python file named train_net_funsd.py 
-The arguments required are as follows:
+### The arguments required are as follows:
 
 - config-file: the path of the config file
 - num-gpus: the number of gpus required 
