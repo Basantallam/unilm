@@ -4,7 +4,7 @@
 
 If you woud like to fine-tune the Object Detection Model on FUNSD. You can run the following commands:
 
-Clone Detectron2 Repository, which will be our detection Framework
+### Clone Detectron2 Repository, which will be our detection Framework
 
 ```
 
@@ -16,7 +16,7 @@ python -m pip install detectron2 -f \
 
 ```
 
-## Install some required modules
+## Install Some Required Modules
 
 ```
 
@@ -25,7 +25,7 @@ pip install opencv-python-headless
 
 ```
 
-## Clone Our Repository, which will contains:
+### Clone Our Repository, which contains:
 
 - FUNSD Dataset images and annotations modified to be in COCO-Style 
 - Config file for the model
