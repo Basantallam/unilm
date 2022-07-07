@@ -35,14 +35,17 @@ git clone https://github.com/Basantallam/unilm
 ## Run the fine-tuning code in the python file named train_net_funsd.py 
 The arguments required are as follows:
 
-- the path of the config file
-- the number of gpus required 
-- eval only flag in case you want to just evaluate your model not train it
-- initial model weights, which in this case I chose to be the weights of DiT Mask RCNN Base Model that was Trained on PubLayNet
+- config-file: the path of the config file
+- num-gpus: the number of gpus required 
+- eval-only: a flag in case you want to just evaluate your model not train it
+- MODEL.WEIGHTS: the initial model weights that you will finetune, which in this case I chose to be the weights of DiT Mask RCNN Base Model that was Trained on PubLayNet
+- OUTPUT_DIR: which is the directory the checkpoints and final model will be saved at
 
 ```
-python3 /unilm/dit/object_detection/train_net_funsd.py --config-file /unilm/dit/object_detection/funsd/maskrcnn_dit_base.yaml --num-gpus 8 MODEL.WEIGHTS https://layoutlm.blob.core.windows.net/dit/dit-fts/icdar19modern_dit-b_mrcnn.pth
+python3 /unilm/dit/object_detection/train_net_funsd.py --config-file /unilm/dit/object_detection/funsd/maskrcnn_dit_base.yaml --num-gpus 8 MODEL.WEIGHTS https://layoutlm.blob.core.windows.net/dit/dit-fts/icdar19modern_dit-b_mrcnn.pth OUTPUT_DIR <path of directory you'll save the model in>
 ```
+
+During Training, You will see in the terminal the loss, and the Average Precision during training, and the model has a CHECKPOINT_PERIOD of 2000, so it constantly saves checkpoints of the model.
 
 ## Citation
 
