@@ -1,33 +1,39 @@
 # [DiT: Self-Supervised Pre-Training for Document Image Transformer](https://arxiv.org/abs/2203.02378)
 
 DiT (Document Image Transformer) is a self-supervised pre-trained Document Image Transformer model using large-scale unlabeled text images for Document AI tasks, which is essential since no supervised counterparts ever exist due to the lack of human labeled document images. 
+# In this repository:
+## We demonstrate the evaluation of 2 DiT pre-trained models.
+
+1. Document Classification DiT model
+2. Graphical Document Object Detection DiT model
+
+Additionally, we fine-tuned the Graphical Document Object Detection DiT model to perform the task of Form Understanding on FUNSD Dataset. We test and evaluate its performance. 
+
+# Training
+
+The training code for each of the three models architecture can be found in [here](https://github.com/Basantallam/unilm/tree/master/dit) which is divided into 2 directories:
+
+1. [object detection](https://github.com/Basantallam/unilm/tree/master/dit/object_detection) contains the Graphical Document Object Detection DiT model configurations and training code as well as the FUNSD fine-tuned form understanding model configurations and training code.
+
+2. [classification](https://github.com/Basantallam/unilm/tree/master/dit/classification) contains the Document Classification DiT model configurations and training code.
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/45008728/157173825-0949218a-61f5-4acb-949b-bbc499ab49f2.png" width="500" /><img src="https://user-images.githubusercontent.com/45008728/157173843-796dc878-2607-48d7-85cb-f54a2c007687.png" width="500"/> Model outputs with PubLayNet (left) and ICDAR 2019 cTDaR (right)
 </div>
 
-## What's New
-- Demos on HuggingFace: [Document Layout Analysis](https://huggingface.co/spaces/nielsr/dit-document-layout-analysis), [Document Image Classification](https://huggingface.co/spaces/microsoft/document-image-transformer)
-- March 2022: release pre-trained checkpoints and fine-tuning codes (DiT-base and DiT-large)
-- March 2022: release preprint in [arXiv](https://arxiv.org/abs/2203.02378)
 
 ## Pretrained models
 
-We provide two DiT weights pretrained on [IIT-CDIP Test Collection 1.0](https://dl.acm.org/doi/10.1145/1148170.1148307). The models were pretrained with 224x224 resolution.
+We used DiT weights pretrained on [IIT-CDIP Test Collection 1.0](https://dl.acm.org/doi/10.1145/1148170.1148307). The models were pretrained with 224x224 resolution.
 
-- `DiT-base`: #layer=12; hidden=768; FFN factor=4x; #head=12; patch=16x16 (#parameters: 86M)
-- `DiT-large`: #layer=24; hidden=1024; FFN factor=4x; #head=16; patch=16x16 (#parameters: 304M)
-
-Download checkpoints that are **self-supervised pretrained** on IIT-CDIP Test Collection 1.0:
-- DiT-base: [dit_base_patch16_224](https://layoutlm.blob.core.windows.net/dit/dit-pts/dit-base-224-p16-500k-62d53a.pth)
-- DiT-large: [dit_large_patch16_224](https://layoutlm.blob.core.windows.net/dit/dit-pts/dit-large-224-p16-500k-d7a2fb.pth)
+`DiT-base`: #layer=12; hidden=768; FFN factor=4x; #head=12; patch=16x16 (#parameters: 86M)
 
 
 ## Setup
 
 First, clone the repo and install required packages:
 ```
-git clone https://github.com/microsoft/unilm.git
+git clone https://github.com/Basantallam/unilm
 cd unilm/dit
 pip install -r requirements.txt
 ```
@@ -53,69 +59,25 @@ pip install shapely
 
 ## Fine-tuning on RVL-CDIP (Document Image Classification)
 
-We summarize the validation results as follows. We also provide the fine-tuned weights. The detailed instructions to reproduce the results can be found at [`classification/README.md`](classification/README.md).
+We summarize used the following mdels. The detailed instructions to reproduce the results can be found at [`classification/README.md`](classification/README.md).
 
 | name | initialized checkpoint | resolution | accuracy  | weight |
 |------------|:----------------------------------------|:----------:|:-------:|-----|
 | DiT-base | [dit_base_patch16_224](https://layoutlm.blob.core.windows.net/dit/dit-pts/dit-base-224-p16-500k-62d53a.pth) | 224x224 | 92.11 | [link](https://layoutlm.blob.core.windows.net/dit/dit-fts/rvlcdip_dit-b.pth) |
-| DiT-large | [dit_large_patch16_224](https://layoutlm.blob.core.windows.net/dit/dit-pts/dit-large-224-p16-500k-d7a2fb.pth) | 224x224 | 92.69 | [link](https://layoutlm.blob.core.windows.net/dit/dit-fts/rvlcdip_dit-l.pth) |
 
 
 ## Fine-tuning on PubLayNet (Document Layout Analysis)
 
-We summarize the validation results as follows. We also provide the fine-tuned weights. The detailed instructions to reproduce the results can be found at [`object_detection/README.md`](object_detection/README.md).
+We summarize used the following mdels. The detailed instructions to reproduce the results can be found at [`object_detection/README.md`](object_detection/README.md).
 
 | name | initialized checkpoint | detection algorithm  |  mAP| weight |
 |------------|:----------------------------------------|:----------:|-------------------|-----|
 | DiT-base | [dit_base_patch16_224](https://layoutlm.blob.core.windows.net/dit/dit-pts/dit-base-224-p16-500k-62d53a.pth) | Mask R-CNN | 0.935 |  [link](https://layoutlm.blob.core.windows.net/dit/dit-fts/publaynet_dit-b_mrcnn.pth) |
-| DiT-large | [dit_large_patch16_224](https://layoutlm.blob.core.windows.net/dit/dit-pts/dit-large-224-p16-500k-d7a2fb.pth) | Mask R-CNN | 0.941 |  [link](https://layoutlm.blob.core.windows.net/dit/dit-fts/publaynet_dit-l_mrcnn.pth) | 
-| DiT-base | [dit_base_patch16_224](https://layoutlm.blob.core.windows.net/dit/dit-pts/dit-base-224-p16-500k-62d53a.pth) | Cascade R-CNN | 0.945 |  [link](https://layoutlm.blob.core.windows.net/dit/dit-fts/publaynet_dit-b_cascade.pth) |
-| DiT-large | [dit_large_patch16_224](https://layoutlm.blob.core.windows.net/dit/dit-pts/dit-large-224-p16-500k-d7a2fb.pth) | Cascade R-CNN | 0.949 |  [link](https://layoutlm.blob.core.windows.net/dit/dit-fts/publaynet_dit-l_cascade.pth) |
-
-## Fine-tuning on ICDAR 2019 cTDaR (Table Detection)
-
-We summarize the validation results as follows. We also provide the fine-tuned weights. The detailed instructions to reproduce the results can be found at [`object_detection/README.md`](object_detection/README.md).
-
-## Fine-tuning on Form Understanding on FUNSD Dataset which is composed of 199 Noisy Scanned Form Images.
-I finetuned the Object Detection model that was previously fine-tuned on PubLayNet to perform a new task, namely: Form Understanding.
-
-I used the mask RCNN Base model provided by microsoft unilm that was fine-tuned on PunLayNet. I trained it on 149 images from the FUNSD Dataset and Tested it on 50 images from FUNSD Test Set. 
-
-I converted the FUNSD Annotations to COCO-Style Annotations, which you can find in the folder named FUNSD DataSet in the Object Detection Directory
-
-In Order to Run the 
-
-**Modern**
-
-| name | initialized checkpoint | detection algorithm  |  Weighted Average F1 | weight |
-|------------|:----------------------------------------|:----------:|-------------------|-----|
-| DiT-base | [dit_base_patch16_224](https://layoutlm.blob.core.windows.net/dit/dit-pts/dit-base-224-p16-500k-62d53a.pth) | Mask R-CNN | 94.74 |  [link](https://layoutlm.blob.core.windows.net/dit/dit-fts/icdar19modern_dit-b_mrcnn.pth) |
-| DiT-large | [dit_large_patch16_224](https://layoutlm.blob.core.windows.net/dit/dit-pts/dit-large-224-p16-500k-d7a2fb.pth) | Mask R-CNN | 95.50 |  [link](https://layoutlm.blob.core.windows.net/dit/dit-fts/icdar19modern_dit-l_mrcnn.pth) | 
-| DiT-base | [dit_base_patch16_224](https://layoutlm.blob.core.windows.net/dit/dit-pts/dit-base-224-p16-500k-62d53a.pth) | Cascade R-CNN | 95.85 |  [link](https://layoutlm.blob.core.windows.net/dit/dit-fts/icdar19modern_dit-b_cascade.pth) |
-| DiT-large | [dit_large_patch16_224](https://layoutlm.blob.core.windows.net/dit/dit-pts/dit-large-224-p16-500k-d7a2fb.pth) | Cascade R-CNN | 96.29 |  [link](https://layoutlm.blob.core.windows.net/dit/dit-fts/icdar19modern_dit-l_cascade.pth) |
-
-**Archival**
-
-| name | initialized checkpoint | detection algorithm  |  Weighted Average F1 | weight |
-|------------|:----------------------------------------|:----------:|-------------------|-----|
-| DiT-base | [dit_base_patch16_224](https://layoutlm.blob.core.windows.net/dit/dit-pts/dit-base-224-p16-500k-62d53a.pth) | Mask R-CNN | 96.24 |  [link](https://layoutlm.blob.core.windows.net/dit/dit-fts/icdar19archival_dit-b_mrcnn.pth) |
-| DiT-large | [dit_large_patch16_224](https://layoutlm.blob.core.windows.net/dit/dit-pts/dit-large-224-p16-500k-d7a2fb.pth) | Mask R-CNN | 96.46 |  [link](https://layoutlm.blob.core.windows.net/dit/dit-fts/icdar19archival_dit-l_mrcnn.pth) | 
-| DiT-base | [dit_base_patch16_224](https://layoutlm.blob.core.windows.net/dit/dit-pts/dit-base-224-p16-500k-62d53a.pth) | Cascade R-CNN | 96.63 |  [link](https://layoutlm.blob.core.windows.net/dit/dit-fts/icdar19archival_dit-b_cascade.pth) |
-| DiT-large | [dit_large_patch16_224](https://layoutlm.blob.core.windows.net/dit/dit-pts/dit-large-224-p16-500k-d7a2fb.pth) | Cascade R-CNN | 97.00 |  [link](https://layoutlm.blob.core.windows.net/dit/dit-fts/icdar19archival_dit-l_cascade.pth) |
-
-**Combined (Combine the inference results of Modern and Archival)**
-
-| name | initialized checkpoint | detection algorithm  |  Weighted Average F1 | weight |
-|------------|:----------------------------------------|:----------:|-------------------|-----|
-| DiT-base | [dit_base_patch16_224](https://layoutlm.blob.core.windows.net/dit/dit-pts/dit-base-224-p16-500k-62d53a.pth) | Mask R-CNN | 95.30 |  - |
-| DiT-large | [dit_large_patch16_224](https://layoutlm.blob.core.windows.net/dit/dit-pts/dit-large-224-p16-500k-d7a2fb.pth) | Mask R-CNN | 95.85 |  - | 
-| DiT-base | [dit_base_patch16_224](https://layoutlm.blob.core.windows.net/dit/dit-pts/dit-base-224-p16-500k-62d53a.pth) | Cascade R-CNN | 96.14 |  - |
-| DiT-large | [dit_large_patch16_224](https://layoutlm.blob.core.windows.net/dit/dit-pts/dit-large-224-p16-500k-d7a2fb.pth) | Cascade R-CNN | 96.55 |  - |
 
 
-## Citation
 
-If you find this repository useful, please consider citing our work:
+
+
 ```
 @misc{li2022dit,
     title={DiT: Self-supervised Pre-training for Document Image Transformer},
