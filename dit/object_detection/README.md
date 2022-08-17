@@ -1,23 +1,17 @@
 # DiT for Object Detection
 
-## Fine-Tuning On FUNSD for Form Understanding of Noisy Scanned Documents
+## Fine-Tuning Dit Graphical object detection model on FUNSD for Form Understanding of Noisy Scanned Documents
 
 The FUNSD Dataset has annotations for semantic entity labeling where the entities are "Question", "Answer", "Header" and "Other"
 
 Here is a sample image from the FUNSD Dataset, where you'll see
 
-Questions in blue
-
-Answers in green
-
-Header in orange
-
-Other in pink
+Questions in blue, Answers in green, Header in orange, Other in pink
 
 ![two_forms](https://user-images.githubusercontent.com/30272808/177758850-0189ec22-073c-4bd0-8646-04f18fe142a0.png)
 
-
-### If you woud like to fine-tune the DiT Graphical Object Detection Model on FUNSD in order to train the model on the task of semantic entity labeling in Noisy Scanned Documents, you can run the following commands:
+## Setup
+If you woud like to fine-tune the DiT Graphical Object Detection Model on FUNSD in order to train the model on the task of semantic entity labeling in Noisy Scanned Documents, you can run the following commands:
 
 ### Clone Detectron2 Repository, which will be our detection Framework
 
